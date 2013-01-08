@@ -18,6 +18,11 @@
 ********************************************************************************
 *******************************************************************************/
 
+/**
+ * @fileoverview
+ * @suppress {missingProperties}
+ */
+
 goog.provide('mvc.Model');
 goog.provide('mvc.Model.ValidateError');
 
@@ -93,7 +98,7 @@ mvc.Model = function(opt_options) {
 
   this.autosaver = null;
 
-  this.handleErr_ = goog.nullFunction;
+  // this.handleErr_ = goog.nullFunction;
 
   this.changeHandler_ = goog.events.listen(this,
       goog.events.EventType.CHANGE, this.change_, false, this);
@@ -454,7 +459,7 @@ mvc.Model.prototype.set = function(key, opt_val, opt_silent) {
           success = true;
         }
       } catch (err) {
-        if (err.isValidateError)
+        if (err.isValidateError && this.handleErr_)
           this.handleErr_(err);
         else
           throw err;
