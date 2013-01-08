@@ -20,7 +20,7 @@
 
 /**
  * @fileoverview
- * @suppress {accessControls}
+ * @suppress {accessControls|missingProperties}
  */
 
 goog.provide('mvc.Control');
